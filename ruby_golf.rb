@@ -104,8 +104,7 @@ h.map{|k,v|' '*d+"#{k}:
 r,i=0,0
 s.split.map{|e|j=0
 e.unpack("C*"){|k|j+=k&159}
-j}.sort.map{|e|i+=e
-r+=i}
+j}.sort.map{|e|r+=i+=e}
 r
   end
 
