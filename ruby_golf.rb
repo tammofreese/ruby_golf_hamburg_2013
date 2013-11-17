@@ -83,7 +83,7 @@ x h,0
   def self.x h, d
 h.map{|k,v|' '*d+"#{k}:
 "+(v[0]?[*v].map{|a|' '*d+"- #{a}
-"}.join : x(v,d+2))}.join
+"}*'':x(v,d+2))}*''
   end
 
 
@@ -122,7 +122,7 @@ r
 b=[]
 s.lines{|c|x,y,z=c.split.map &:to_i
 (b[y]||=[])[x]=z.chr}
-b.map{|l|l.map{|c|c||' '}.join+"
-"}.join
+b.map{|l|l.map{|c|c||' '}*''+"
+"}*''
   end
 end
