@@ -103,7 +103,7 @@ h.map{|k,v|d+"#{k}:
   def self.word_letter_sum(s)
 r,i=0,0
 s.split.map{|e|j=0
-e.unpack("C*"){|k|j+=k&159}
+e.unpack("C*"){|k|j+=k&31}
 j}.sort.map{|e|r+=i+=e}
 r
   end
