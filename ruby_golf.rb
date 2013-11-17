@@ -77,13 +77,13 @@ s.gsub(/:(\w+) =>/, '\1:')
   #           level are prepended by two additional spaces per level away from
   #           the top level
   def self.pretty_hash(h)
-x h,0
+x h,''
   end
 
-  def self.x h, d
-h.map{|k,v|' '*d+"#{k}:
-"+(v[0]?[*v].map{|a|' '*d+"- #{a}
-"}*'':x(v,d+2))}*''
+  def self.x h,d
+h.map{|k,v|d+"#{k}:
+"+(v[0]?[*v].map{|a|d+"- #{a}
+"}*'':x(v,d+'  '))}*''
   end
 
 
