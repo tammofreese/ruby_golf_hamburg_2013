@@ -54,9 +54,11 @@ h
   #         ending in a \n
   # output: the maximum value found by calculating the sums of all rows and
   #         columns
+  #
+  # 64 counted characters
   def self.grid_computing(g)
 a=g.lines.map &:split
-(a+a.transpose).map{|l|l.map(&:to_i).inject :+}.max
+(a+a.transpose).map{|l|eval'0d'+l*'+0d'}.max
   end
 
 
