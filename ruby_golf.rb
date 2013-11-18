@@ -7,6 +7,8 @@ module RubyGolf
   # input:  n - numbers string to be x'ed out,
   #         v - number of visible trailing numbers
   # output: x'ed out string
+  #
+  # 23 counted characters
   def self.x_out_numbers(n, v)
 n.gsub /.(?=.{#{v}})/,?x
   end
@@ -18,6 +20,8 @@ n.gsub /.(?=.{#{v}})/,?x
   # input:  an identifier string in camel case notation. i.e. 'SchinkenWurst'
   # ouput:  a 'ruby style' version of the identifier: all lowercase, former case
   #         changes to upper case get a prepended underscore
+  #
+  # 39 counted characters
   def self.underscore(s)
 s.gsub(/(.)-?([A-Z])/,'\1_\2').downcase
   end
@@ -31,11 +35,15 @@ s.gsub(/(.)-?([A-Z])/,'\1_\2').downcase
   #         The values stay the same except they're hashes too.
   #         Values that are hashes contain only smybols as keys too, this
   #         condition is maintained recursivley
+  #
+  # 41 counted characters
   def self.symbolize_keys(h)
 s h
   end
   def self.s h
-Hash===h ?Hash[h.map{|k,v|[:"#{k}",s(v)]}]:h
+Hash[h.map{|k,v|[:"#{k}",s(v)]}]
+rescue
+h
   end
 
 
@@ -59,8 +67,14 @@ a=g.lines.map &:split
   #         rockets
   # output: a string describing the same hash but without hash rockets, but
   #         otherwise with the same formatting
+  #
+  # 24 counted characters
+  #
+  # Version with only 22 counted characters, but not accepted by the test script:
+  # s.gsub /:(\w+) =>/,'\1:'
+  #
   def self.reformat_hash(s)
-s.gsub(/:(\w+) =>/, '\1:')
+s.gsub(/:(\w+) =>/,'\1:')
   end
 
 
@@ -76,6 +90,9 @@ s.gsub(/:(\w+) =>/, '\1:')
   #         * all keys or values that are contained in a hash that is not top
   #           level are prepended by two additional spaces per level away from
   #           the top level
+  #
+  # 72 counted characters
+  #
   def self.pretty_hash(h)
 x h,''
   end
@@ -100,6 +117,9 @@ h.map{|k,v|d+"#{k}:
   #         * multiply each sum with the position of its word in the list (first
   #           word 1* ...)
   #         * sum all products
+  #
+  # 72 counted characters
+  #
   def self.word_letter_sum(s)
 r,i=0,0
 s.split.map{|e|j=0
@@ -118,6 +138,9 @@ r
   #         * ascii value for that coordinate
   # output: an ascii art string ready for output where there aren't any trailing
   #         spaces after the last character in each line
+  #
+  # 93 counted characters
+  #
   def self.bob_ross(s)
 b=[]
 s.lines{|c|x,y,z=c.split.map &:to_i
